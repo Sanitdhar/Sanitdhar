@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/Sanitdhar">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1200&color=2346D4&center=true&vCenter=true&width=760&lines=Software+Engineer+%40+Target;Durable+Temporal+workflows+%E2%86%92+10M+items%2Fday;35+systems%2C+one+item+orchestrator;Google+ADK+%C2%B7+A2A+%C2%B7+PostgreSQL+%2B+Citus+%C2%B7+Cassandra;Shipping+0+%E2%86%92+1+platforms+since+2017" alt="Typing intro" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1200&color=2346D4&center=true&vCenter=true&width=760&lines=Engineering+%40+Target;Durable+Temporal+workflows+%E2%86%92+10M+items%2Fday;35+systems%2C+one+item+orchestrator;Google+ADK+%C2%B7+A2A+%C2%B7+PostgreSQL+%2B+Citus+%C2%B7+Cassandra;Shipping+0+%E2%86%92+1+platforms+since+2017" alt="Typing intro" />
   </a>
 </p>
 
