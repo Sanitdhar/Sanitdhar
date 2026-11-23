@@ -5,6 +5,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Sanitdhar">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1200&color=2346D4&center=true&vCenter=true&width=760&lines=Software+Engineer+%40+Target;Durable+Temporal+workflows+%E2%86%92+10M+items%2Fday;35+systems%2C+one+item+orchestrator;Google+ADK+%C2%B7+A2A+%C2%B7+PostgreSQL+%2B+Citus+%C2%B7+Cassandra;Shipping+0+%E2%86%92+1+platforms+since+2017" alt="Typing intro" />
+  </a>
+</p>
+
+<p align="center">
   <a href="https://www.linkedin.com/in/sanit-dhar-04a341139"><img src="https://img.shields.io/badge/LinkedIn-Sanit%20Dhar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:sanitdhar25@gmail.com"><img src="https://img.shields.io/badge/Email-sanitdhar25%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://sanitdhar.github.io/Sanitdhar/"><img src="https://img.shields.io/badge/Portfolio-sanitdhar.github.io%2FSanitdhar-111827?style=for-the-badge&logo=githubpages&logoColor=white" alt="Portfolio" /></a>
