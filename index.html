@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanit Dhar</title>
+<meta name="description" content="Sanit Dhar, Lead Software Engineer at Target. Durable workflow orchestration, distributed data and agentic platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a systems engineer's spec sheet. Left-aligned column, mono metadata rails,
+   each project read as prose then shown as a drawn architecture figure. */
+:root {
+  --paper: #f2f3ef;
+  --panel: #fbfbf9;
+  --ink: #141820;
+  --muted: #5b6370;
+  --rule: #d3d7d0;
+  --accent: #2346d4;
+  --signal: #d9480f;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e1217;
+    --panel: #151a21;
+    --ink: #e6e9ed;
+    --muted: #98a1ad;
+    --rule: #29313b;
+    --accent: #8098ff;
+    --signal: #ff8152;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e1217;
+  --panel: #151a21;
+  --ink: #e6e9ed;
+  --muted: #98a1ad;
+  --rule: #29313b;
+  --accent: #8098ff;
+  --signal: #ff8152;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- header ---------- */
+header { padding: 56px 0 40px; border-bottom: 1px solid var(--rule); }
+.rail {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 6px 18px;
+}
+.rail b { color: var(--accent); font-weight: 600; }
+h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(52px, 9vw, 104px);
+  line-height: .95;
+  letter-spacing: -.02em;
+  margin: 18px 0 18px;
+  text-wrap: balance;
+}
+.lede { font-size: 21px; line-height: 1.5; max-width: 34em; margin: 0 0 26px; text-wrap: pretty; }
+.lede em { font-style: normal; color: var(--accent); font-weight: 500; }
+.contact { display: flex; flex-wrap: wrap; gap: 10px; }
+.contact a, .contact button {
+  font-family: var(--mono); font-size: 13.5px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--panel); color: var(--ink);
+  text-decoration: none; cursor: pointer;
+}
+.contact a:hover, .contact button:hover { border-color: var(--accent); color: var(--accent); }
+
+.specs {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0; margin: 40px 0 0; padding: 0;
+  border-top: 1px solid var(--ink);
+}
+.specs div { padding: 14px 16px 4px 0; border-right: 1px solid var(--rule); }
+.specs div + div { padding-left: 16px; }
+.specs div:last-child { border-right: 0; }
+.specs dt { font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.specs dd { margin: 2px 0 0; font-family: var(--display); font-weight: 600; font-size: 40px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.specs dd small { font-size: 16px; color: var(--muted); font-weight: 500; }
+
+/* ---------- sections ---------- */
+section { padding: 56px 0 8px; }
+.sec-head { display: grid; grid-template-columns: 64px 1fr; gap: 0 16px; align-items: baseline; margin-bottom: 18px; }
+.sec-num { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 600; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1.1; margin: 0; text-wrap: balance; }
+.sec-body { margin-left: 80px; }
+.sec-body p { max-width: 40em; margin: 0 0 14px; }
+.points { list-style: none; padding: 0; margin: 0 0 18px; max-width: 44em; display: grid; gap: 8px; }
+.points li { padding-left: 22px; position: relative; }
+.points li::before { content: ""; position: absolute; left: 0; top: .72em; width: 10px; height: 1px; background: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.tags li { font-family: var(--mono); font-size: 12.5px; padding: 3px 9px; border: 1px solid var(--rule); border-radius: 3px; color: var(--muted); background: var(--panel); }
+
+figure { margin: 22px 0 8px; }
+.diagram {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 18px;
+  overflow-x: auto;
+  color: var(--ink);
+}
+.diagram svg { display: block; width: 100%; min-width: 760px; height: auto; }
+figcaption { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* svg parts, styled from page tokens */
+.box { fill: var(--paper); stroke: currentColor; stroke-width: 1.4; }
+.box.hot { stroke: var(--accent); stroke-width: 2.4; }
+.box.warn { stroke: var(--signal); stroke-width: 2.2; }
+.box.ghost { fill: none; stroke: var(--rule); stroke-dasharray: 4 4; }
+.t { font-family: var(--body); font-size: 14px; fill: currentColor; font-weight: 600; }
+.t.sub { font-family: var(--mono); font-size: 11.5px; font-weight: 400; fill: var(--muted); }
+.t.hot { fill: var(--accent); }
+.t.warn { fill: var(--signal); }
+.t.panel { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .05em; fill: var(--muted); }
+.lab { font-family: var(--mono); font-size: 11.5px; fill: var(--muted); }
+.ln { stroke: currentColor; stroke-width: 1.4; fill: none; }
+.ln.hot { stroke: var(--accent); stroke-width: 2; }
+.ln.dash { stroke-dasharray: 5 4; }
+.mk { fill: currentColor; }
+.mk.hot { fill: var(--accent); }
+
+/* career */
+.career { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); max-width: 900px; }
+.career li { display: grid; grid-template-columns: 140px 1fr; gap: 6px 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.career .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.career h3 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; line-height: 1.2; }
+.career h3 span { font-family: var(--body); font-weight: 400; font-size: 16px; color: var(--muted); }
+.career p { margin: 4px 0 0; max-width: 46em; }
+
+/* stack */
+.stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px 28px; max-width: 960px; }
+.stack h3 { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+
+footer { margin-top: 64px; padding: 28px 0 48px; border-top: 1px solid var(--ink); font-family: var(--mono); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+.toast { font-family: var(--mono); font-size: 12.5px; color: var(--accent); align-self: center; min-height: 1em; }
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .specs div:nth-child(2) { border-right: 0; }
+  .specs div:nth-child(3) { padding-left: 0; }
+  .specs div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .sec-head { grid-template-columns: 1fr; }
+  .sec-body { margin-left: 0; }
+  .career li { grid-template-columns: 1fr; }
+  h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow { stroke-dasharray: 6 6; animation: flow 1.6s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -12; } }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="rail">
+      <span><b>Lead Software Engineer</b></span>
+      <span>Target · Item platform</span>
+      <span>Bangalore, IN</span>
+      <span>Since 2017</span>
+    </div>
+    <h1>Sanit Dhar</h1>
+    <p class="lede">Lead Software Engineer at Target. I lead the team building <em>item ingestion for every vendor and partner</em>: durable Temporal workflows across 35 systems for 10M items a day, sharded data on Citus and Cassandra, and multi-agent orchestration on Google ADK and A2A.</p>
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/sanit-dhar-04a341139">LinkedIn ↗</a>
+      <a href="https://github.com/Sanitdhar">github.com/Sanitdhar ↗</a>
+      <button type="button" id="copy-email" data-email="sanitdhar25@gmail.com">sanitdhar25@gmail.com · copy</button>
+      <span class="toast" id="toast" aria-live="polite"></span>
+    </div>
+    <dl class="specs">
+      <div><dt>Ingestion target</dt><dd>10M<small> items/day</small></dd></div>
+      <div><dt>Systems orchestrated</dt><dd>35</dd></div>
+      <div><dt>Stores served</dt><dd>200+</dd></div>
+      <div><dt>Shipping since</dt><dd>2017</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 01 UIO -->
+  <section id="uio" aria-labelledby="h-uio">
+    <div class="sec-head"><span class="sec-num">01 / NOW</span><h2 id="h-uio">Unified Item Orchestrator</h2></div>
+    <div class="sec-body">
+      <p>Vendors and partners used to reach Target's catalog through several separate ingestion paths. UIO replaces them with one route. Each submitted item becomes a durable, long-running Temporal workflow that drives 35 systems until the item is sellable.</p>
+      <ul class="points">
+        <li>Activity-level retries and timeouts, idempotent activities, and saga-style compensation when a step fails halfway.</li>
+        <li>Workflow state survives worker restarts and downstream outages, so no item is lost mid-flight.</li>
+        <li>A Core Data Service on horizontally sharded PostgreSQL with Citus is the platform's system of record.</li>
+      </ul>
+      <ul class="tags"><li>Temporal</li><li>Java</li><li>PostgreSQL + Citus</li><li>Cassandra</li><li>Kafka</li><li>GKE</li></ul>
+    </div>
+    <figure>
+      <div class="diagram">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="Vendors submit items to a unified ingestion API, which starts one Temporal workflow per item. The workflow drives 35 item systems, keeps item state in a Citus core data service, persists its history in sharded Cassandra, and finishes when the item is sellable.">
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a1h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- vendors -->
+          <rect class="box" x="20" y="122" width="140" height="56" rx="4"/>
+          <text class="t" x="90" y="146" text-anchor="middle">Vendors &amp;</text>
+          <text class="t" x="90" y="164" text-anchor="middle">partners</text>
+          <!-- api -->
+          <rect class="box" x="210" y="122" width="150" height="56" rx="4"/>
+          <text class="t" x="285" y="146" text-anchor="middle">Unified</text>
+          <text class="t" x="285" y="164" text-anchor="middle">ingestion API</text>
+          <!-- temporal -->
+          <rect class="box hot" x="420" y="100" width="180" height="100" rx="6"/>
+          <text class="t hot" x="510" y="140" text-anchor="middle">Temporal</text>
+          <text class="t" x="510" y="160" text-anchor="middle">item workflow</text>
+          <text class="t sub" x="510" y="180" text-anchor="middle">one per item</text>
+          <!-- 35 systems stack -->
+          <rect class="box" x="682" y="22" width="160" height="56" rx="4"/>
+          <rect class="box" x="676" y="28" width="160" height="56" rx="4"/>
+          <rect class="box" x="670" y="34" width="160" height="56" rx="4"/>
+          <text class="t" x="750" y="58" text-anchor="middle">35 item systems</text>
+          <text class="t sub" x="750" y="76" text-anchor="middle">activities</text>
+          <!-- sellable -->
+          <rect class="box" x="860" y="122" width="120" height="56" rx="28"/>
+          <text class="t" x="920" y="146" text-anchor="middle">Sellable</text>
+          <text class="t" x="920" y="164" text-anchor="middle">at Target</text>
+          <!-- cds -->
+          <rect class="box" x="330" y="262" width="230" height="58" rx="4"/>
+          <text class="t" x="445" y="286" text-anchor="middle">Core Data Service</text>
+          <text class="t sub" x="445" y="306" text-anchor="middle">PostgreSQL + Citus · sharded</text>
+          <!-- cassandra -->
+          <rect class="box" x="620" y="262" width="230" height="58" rx="4"/>
+          <text class="t" x="735" y="286" text-anchor="middle">Temporal persistence</text>
+          <text class="t sub" x="735" y="306" text-anchor="middle">Cassandra · sharded</text>
+
+          <!-- edges -->
+          <line class="ln" x1="160" y1="150" x2="206" y2="150" marker-end="url(#a1)"/>
+          <text class="lab" x="183" y="140" text-anchor="middle">items</text>
+          <line class="ln hot flow" x1="360" y1="150" x2="416" y2="150" marker-end="url(#a1h)"/>
+          <text class="lab" x="388" y="140" text-anchor="middle">start</text>
+          <path class="ln hot" d="M600,118 C630,118 640,70 666,66" marker-end="url(#a1h)"/>
+          <path class="ln" d="M668,82 C645,90 630,132 604,132" marker-end="url(#a1)"/>
+          <text class="lab" x="560" y="40" text-anchor="middle">retry · timeout · compensate</text>
+          <line class="ln" x1="560" y1="44" x2="620" y2="88" stroke-opacity=".35"/>
+          <line class="ln hot" x1="600" y1="170" x2="856" y2="170" marker-end="url(#a1h)"/>
+          <text class="lab" x="740" y="190" text-anchor="middle">all steps complete</text>
+          <line class="ln" x1="470" y1="204" x2="458" y2="258" marker-start="url(#a1)" marker-end="url(#a1)"/>
+          <text class="lab" x="416" y="236" text-anchor="end">item state</text>
+          <path class="ln dash" d="M580,200 C600,230 680,232 706,258" marker-end="url(#a1)"/>
+          <text class="lab" x="700" y="232">history · task queues</text>
+        </svg>
+      </div>
+      <figcaption><b>Fig. 1</b> One workflow per item: Temporal drives the 35 systems and owns the item until it is sellable.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 02 Temporal scale -->
+  <section id="scale" aria-labelledby="h-scale">
+    <div class="sec-head"><span class="sec-num">02 / NOW</span><h2 id="h-scale">Scaling Temporal from 5M to 10M workflows a day</h2></div>
+    <div class="sec-body">
+      <p>Today Temporal keeps every workflow's history in one PostgreSQL store. To double throughput, I am moving that persistence layer to horizontally sharded Cassandra, so history writes spread across a ring of nodes.</p>
+      <ul class="tags"><li>Temporal history shards</li><li>Cassandra</li><li>PostgreSQL</li><li>Capacity planning</li></ul>
+    </div>
+    <figure>
+      <div class="diagram">
+        <svg viewBox="0 0 1000 300" role="img" aria-label="Before: the Temporal history service writes all workflow history to a single PostgreSQL store, at about 5 million workflows a day. After: history shards write to several Cassandra nodes, for a 10 million workflows a day target.">
+          <defs>
+            <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a2h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- before panel -->
+          <rect class="box ghost" x="16" y="16" width="400" height="268" rx="6"/>
+          <text class="t panel" x="36" y="44">BEFORE · ~5M WORKFLOWS/DAY</text>
+          <rect class="box" x="116" y="70" width="200" height="52" rx="4"/>
+          <text class="t" x="216" y="101" text-anchor="middle">Temporal history service</text>
+          <line class="ln" x1="216" y1="122" x2="216" y2="192" marker-end="url(#a2)"/>
+          <text class="lab" x="226" y="162">all history writes</text>
+          <rect class="box warn" x="126" y="198" width="180" height="58" rx="4"/>
+          <text class="t warn" x="216" y="224" text-anchor="middle">Single PostgreSQL</text>
+          <text class="t sub" x="216" y="243" text-anchor="middle">one store</text>
+
+          <!-- migrate arrow -->
+          <line class="ln hot" x1="428" y1="150" x2="528" y2="150" marker-end="url(#a2h)"/>
+          <text class="lab" x="478" y="138" text-anchor="middle">migrate</text>
+
+          <!-- after panel -->
+          <rect class="box ghost" x="540" y="16" width="444" height="268" rx="6"/>
+          <text class="t panel" x="560" y="44">AFTER · 10M WORKFLOWS/DAY TARGET</text>
+          <rect class="box" x="580" y="70" width="110" height="46" rx="4"/><text class="t" x="635" y="98" text-anchor="middle">shard 1</text>
+          <rect class="box" x="707" y="70" width="110" height="46" rx="4"/><text class="t" x="762" y="98" text-anchor="middle">shard 2</text>
+          <rect class="box" x="834" y="70" width="110" height="46" rx="4"/><text class="t" x="889" y="98" text-anchor="middle">shard N</text>
+          <line class="ln hot" x1="635" y1="116" x2="635" y2="192" marker-end="url(#a2h)"/>
+          <line class="ln hot" x1="762" y1="116" x2="762" y2="192" marker-end="url(#a2h)"/>
+          <line class="ln hot" x1="889" y1="116" x2="889" y2="192" marker-end="url(#a2h)"/>
+          <text class="lab" x="700" y="160" text-anchor="middle">partitioned</text>
+          <text class="lab" x="827" y="160" text-anchor="middle">writes</text>
+          <rect class="box hot" x="580" y="198" width="110" height="58" rx="4"/><text class="t" x="635" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="635" y="243" text-anchor="middle">node 1</text>
+          <rect class="box hot" x="707" y="198" width="110" height="58" rx="4"/><text class="t" x="762" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="762" y="243" text-anchor="middle">node 2</text>
+          <rect class="box hot" x="834" y="198" width="110" height="58" rx="4"/><text class="t" x="889" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="889" y="243" text-anchor="middle">node N</text>
+        </svg>
+      </div>
+      <figcaption><b>Fig. 2</b> The change is the write path: one store becomes a ring of Cassandra nodes behind Temporal's history shards.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 03 Agent orchestrator -->
+  <section id="agents" aria-labelledby="h-agents">
+    <div class="sec-head"><span class="sec-num">03</span><h2 id="h-agents">Item Agent Orchestrator</h2></div>
+    <div class="sec-body">
+      <p>A multi-agent platform built on Google ADK. A decision-model classifier routes each item request to the right agent. Agents coordinate over the A2A protocol, and the same Temporal platform behind UIO runs their long-running tasks with the same durability and retries.</p>
+      <ul class="tags"><li>Google ADK</li><li>A2A protocol</li><li>Decision-model classifier</li><li>Temporal</li></ul>
+    </div>
+    <figure>
+      <div class="diagram">
+        <svg viewBox="0 0 1000 300" role="img" aria-label="An item request goes to a decision-model classifier, which routes it to one of several Google ADK agents. The agents talk to each other over A2A and hand long-running tasks to the Temporal task orchestrator.">
+          <defs>
+            <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a3h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <rect class="box" x="20" y="122" width="140" height="56" rx="4"/>
+          <text class="t" x="90" y="155" text-anchor="middle">Item request</text>
+          <polygon class="box hot" points="300,82 390,150 300,218 210,150"/>
+          <text class="t hot" x="300" y="146" text-anchor="middle">Decision</text>
+          <text class="t" x="300" y="164" text-anchor="middle">classifier</text>
+          <rect class="box" x="470" y="30" width="170" height="56" rx="4"/><text class="t" x="555" y="55" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="73" text-anchor="middle">specialist</text>
+          <rect class="box" x="470" y="122" width="170" height="56" rx="4"/><text class="t" x="555" y="147" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="165" text-anchor="middle">specialist</text>
+          <rect class="box" x="470" y="214" width="170" height="56" rx="4"/><text class="t" x="555" y="239" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="257" text-anchor="middle">specialist</text>
+          <rect class="box hot" x="760" y="100" width="220" height="100" rx="6"/>
+          <text class="t hot" x="870" y="140" text-anchor="middle">Temporal</text>
+          <text class="t" x="870" y="160" text-anchor="middle">task orchestrator</text>
+          <text class="t sub" x="870" y="180" text-anchor="middle">shared with UIO</text>
+
+          <line class="ln" x1="160" y1="150" x2="206" y2="150" marker-end="url(#a3)"/>
+          <path class="ln hot" d="M362,129 C410,100 420,60 466,58" marker-end="url(#a3h)"/>
+          <line class="ln hot" x1="390" y1="150" x2="466" y2="150" marker-end="url(#a3h)"/>
+          <path class="ln hot" d="M362,171 C410,200 420,240 466,242" marker-end="url(#a3h)"/>
+          <text class="lab" x="420" y="140" text-anchor="middle">route</text>
+
+          <line class="ln" x1="555" y1="88" x2="555" y2="120" marker-start="url(#a3)" marker-end="url(#a3)"/>
+          <line class="ln" x1="555" y1="180" x2="555" y2="212" marker-start="url(#a3)" marker-end="url(#a3)"/>
+          <text class="lab" x="566" y="108">A2A</text>
+          <text class="lab" x="566" y="200">A2A</text>
+
+          <path class="ln" d="M640,58 C700,60 710,120 756,128" marker-end="url(#a3)"/>
+          <line class="ln" x1="640" y1="150" x2="756" y2="150" marker-end="url(#a3)"/>
+          <path class="ln" d="M640,242 C700,240 710,180 756,172" marker-end="url(#a3)"/>
+          <text class="lab" x="698" y="170" text-anchor="middle">long-running</text>
+          <text class="lab" x="698" y="184" text-anchor="middle">tasks</text>
+        </svg>
+      </div>
+      <figcaption><b>Fig. 3</b> The classifier picks the agent; A2A connects agents; Temporal keeps their long tasks alive.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 04 GenAI enrichment -->
+  <section id="genai" aria-labelledby="h-genai">
+    <div class="sec-head"><span class="sec-num">04</span><h2 id="h-genai">LLM attribute enrichment with a human in the loop</h2></div>
+    <div class="sec-body">
+      <p>I led the taxonomy and item-data side of an initiative that uses LLMs to derive and enrich item attributes, so items are set up faster and are easier to find. I built the item MDM's handling of a new AI-generated attribute group by myself, across both rollout phases.</p>
+      <ul class="points">
+        <li>A flag in the taxonomy platform controls which attributes AI may derive; I made it editable.</li>
+        <li>Taxonomists review AI taxonomy recommendations in the taxonomy platform, and their feedback flows back to the models.</li>
+      </ul>
+      <ul class="tags"><li>LLMs</li><li>HITL</li><li>MDM</li><li>Taxonomy</li></ul>
+    </div>
+    <figure>
+      <div class="diagram">
+        <svg viewBox="0 0 1000 300" role="img" aria-label="The taxonomy platform publishes the list of AI-derivable attributes to an enrichment service, which calls LLMs. Derived values land in the item MDM as an AI-generated attribute group. Taxonomy recommendations go to a human-in-the-loop review, and taxonomist feedback returns to the models.">
+          <defs>
+            <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a4h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <rect class="box" x="20" y="40" width="190" height="62" rx="4"/>
+          <text class="t" x="115" y="67" text-anchor="middle">Taxonomy platform</text>
+          <text class="t sub" x="115" y="87" text-anchor="middle">AI-derivable flag</text>
+          <rect class="box" x="270" y="40" width="170" height="62" rx="4"/>
+          <text class="t" x="355" y="77" text-anchor="middle">Enrichment service</text>
+          <rect class="box" x="500" y="40" width="190" height="62" rx="4"/>
+          <text class="t" x="595" y="67" text-anchor="middle">DS / LLM models</text>
+          <text class="t sub" x="595" y="87" text-anchor="middle">derive values</text>
+          <rect class="box" x="760" y="40" width="220" height="62" rx="4"/>
+          <text class="t" x="870" y="67" text-anchor="middle">Item MDM</text>
+          <text class="t sub" x="870" y="87" text-anchor="middle">AI-generated attribute group</text>
+          <rect class="box hot" x="500" y="200" width="190" height="62" rx="6"/>
+          <text class="t hot" x="595" y="227" text-anchor="middle">HITL review</text>
+          <text class="t sub" x="595" y="247" text-anchor="middle">taxonomists</text>
+
+          <line class="ln" x1="210" y1="71" x2="266" y2="71" marker-end="url(#a4)"/>
+          <text class="lab" x="238" y="126" text-anchor="middle">eligible</text>
+          <text class="lab" x="238" y="140" text-anchor="middle">attributes</text>
+          <line class="ln" x1="440" y1="71" x2="496" y2="71" marker-end="url(#a4)"/>
+          <text class="lab" x="468" y="126" text-anchor="middle">generate</text>
+          <line class="ln" x1="690" y1="71" x2="756" y2="71" marker-end="url(#a4)"/>
+          <text class="lab" x="723" y="126" text-anchor="middle">derived</text>
+          <text class="lab" x="723" y="140" text-anchor="middle">values</text>
+          <line class="ln" x1="570" y1="102" x2="570" y2="196" marker-end="url(#a4)"/>
+          <text class="lab" x="560" y="156" text-anchor="end">recommendations</text>
+          <line class="ln hot" x1="620" y1="200" x2="620" y2="106" marker-end="url(#a4h)"/>
+          <text class="lab" x="632" y="156">feedback</text>
+        </svg>
+      </div>
+      <figcaption><b>Fig. 4</b> AI derives, the MDM keeps, and taxonomists correct: the feedback edge closes the loop.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 05 AI dev harness -->
+  <section id="harness" aria-labelledby="h-harness">
+    <div class="sec-head"><span class="sec-num">05</span><h2 id="h-harness">AI-driven development harness</h2></div>
+    <div class="sec-body">
+      <p>I built a harness that gives my whole team the same context when they work with coding agents such as Claude Code and OpenCode. It ships reusable skills and skill configuration, and it runs on spec-driven development: the spec is written first, and agents implement against it.</p>
+      <ul class="tags"><li>Claude Code</li><li>OpenCode</li><li>Agent skills</li><li>Spec-driven development</li></ul>
+    </div>
+  </section>
+
+  <!-- career -->
+  <section id="career" aria-labelledby="h-career">
+    <div class="sec-head"><span class="sec-num">06</span><h2 id="h-career">Where I've built</h2></div>
+    <ol class="career" reversed>
+      <li>
+        <span class="when">2024 – now</span>
+        <div><h3>Target <span>· Lead Software Engineer</span></h3>
+        <p>Unified Item Orchestrator, Temporal scaling to 10M/day, Item Agent Orchestrator on ADK and A2A, Citus core data service, LLM attribute enrichment, item taxonomy rewrite, team AI dev harness.</p></div>
+      </li>
+      <li>
+        <span class="when">2021 – 2024</span>
+        <div><h3>Falabella <span>· Senior Software Engineer</span></h3>
+        <p>Go promotion engine with ~30% lower latency and ~10% less memory at 2M+ requests/day. A store data plane to 200+ stores with zero data loss. Event-driven order creation, ~50% faster, and store BFFs that replaced legacy systems.</p></div>
+      </li>
+      <li>
+        <span class="when">2019 – 2021</span>
+        <div><h3>Lowe's <span>· Software Engineer</span></h3>
+        <p>Core engineer on Enterprise Cart &amp; Checkout. Migrated 100% of traffic off a decade-old system to a reactive platform on Spring WebFlux, Couchbase and Kafka.</p></div>
+      </li>
+      <li>
+        <span class="when">2017 – 2019</span>
+        <div><h3>Mphasis <span>· Software Engineer</span></h3>
+        <p>NEXTSTEP, a platform hosting 40 microservices, plus a service that checks each one's liveness on a schedule.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- stack -->
+  <section id="stack" aria-labelledby="h-stack">
+    <div class="sec-head"><span class="sec-num">07</span><h2 id="h-stack">Stack</h2></div>
+    <div class="stack">
+      <div><h3>Languages</h3><ul class="tags"><li>Java</li><li>Go</li><li>Kotlin</li><li>Python</li><li>JavaScript</li></ul></div>
+      <div><h3>Orchestration &amp; agents</h3><ul class="tags"><li>Temporal</li><li>Google ADK</li><li>A2A</li><li>Saga</li></ul></div>
+      <div><h3>Data</h3><ul class="tags"><li>PostgreSQL</li><li>Citus</li><li>Cassandra</li><li>MongoDB</li><li>Couchbase</li><li>Redis</li><li>Elasticsearch</li><li>BigQuery</li></ul></div>
+      <div><h3>Messaging &amp; APIs</h3><ul class="tags"><li>Kafka</li><li>Pub/Sub</li><li>gRPC</li><li>GraphQL</li><li>REST</li></ul></div>
+      <div><h3>Cloud &amp; delivery</h3><ul class="tags"><li>GCP</li><li>GKE</li><li>Kubernetes</li><li>Docker</li><li>Terraform</li><li>ArgoCD</li><li>Spinnaker</li><li>GitLab CI</li><li>GitHub Actions</li><li>Jenkins</li></ul></div>
+      <div><h3>Observability</h3><ul class="tags"><li>Datadog</li><li>Grafana</li><li>Prometheus</li><li>Loki</li><li>OpenTelemetry</li></ul></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Sanit Dhar · B.Tech Electrical Engineering, NIT Agartala</span>
+    <span><a href="https://github.com/Sanitdhar">github.com/Sanitdhar</a> · <a href="https://www.linkedin.com/in/sanit-dhar-04a341139">LinkedIn</a> · sanitdhar25@gmail.com</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var toast = document.getElementById('toast');
+  btn.addEventListener('click', function () {
+    var email = btn.getAttribute('data-email');
+    function done(msg) { toast.textContent = msg; setTimeout(function () { toast.textContent = ''; }, 2200); }
+    try {
+      navigator.clipboard.writeText(email).then(function () { done('Email copied'); }, function () { done(email); });
+    } catch (e) { done(email); }
+  });
+})();
+</script>
+</body>
+</html>
