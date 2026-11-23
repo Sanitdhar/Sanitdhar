@@ -110,7 +110,7 @@ A harness for my team that sets **team-wide context** for coding agents (Claude 
 
 | When | Where | What I built |
 |---|---|---|
-| 2024 → now | **Target** · Software Engineer | Unified Item Orchestrator (Temporal, 35 systems, 10M/day), Item Agent Orchestrator (ADK + A2A), Citus core data service, LLM attribute enrichment, item taxonomy rewrite |
+| 2024 → now | **Target** · Engineering | Unified Item Orchestrator (Temporal, 35 systems, 10M/day), Item Agent Orchestrator (ADK + A2A), Citus core data service, LLM attribute enrichment, item taxonomy rewrite |
 | 2021 → 2024 | **Falabella** · Senior SWE | Go promotion engine (−30% latency, −10% memory), store data plane to 200+ stores with zero data loss, event-driven order confirmation & store BFFs |
 | 2019 → 2021 | **Lowe's** · SWE | Enterprise Cart & Checkout; migrated 100% of traffic off a decade-old system (Spring WebFlux, Couchbase, Kafka) |
 | 2017 → 2019 | **Mphasis** · SWE | NEXTSTEP: platform hosting 40 microservices, plus a liveness-monitoring service |
