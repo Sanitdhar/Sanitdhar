@@ -5,12 +5,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Sanitdhar">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1200&color=2346D4&center=true&vCenter=true&width=760&lines=Lead+Software+Engineer+%40+Target;Durable+Temporal+workflows+%E2%86%92+10M+items%2Fday;35+systems%2C+one+item+orchestrator;Google+ADK+%C2%B7+A2A+%C2%B7+PostgreSQL+%2B+Citus+%C2%B7+Cassandra;Shipping+0+%E2%86%92+1+platforms+since+2017" alt="Typing intro" />
-  </a>
-</p>
-
-<p align="center">
   <a href="https://www.linkedin.com/in/sanit-dhar-04a341139"><img src="https://img.shields.io/badge/LinkedIn-Sanit%20Dhar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:sanitdhar25@gmail.com"><img src="https://img.shields.io/badge/Email-sanitdhar25%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://sanitdhar.github.io/Sanitdhar/"><img src="https://img.shields.io/badge/Portfolio-sanitdhar.github.io%2FSanitdhar-111827?style=for-the-badge&logo=githubpages&logoColor=white" alt="Portfolio" /></a>
@@ -23,7 +17,7 @@
 
 ```yaml
 name:        Sanit Dhar
-role:        Lead Software Engineer @ Target
+role:        Software Engineer @ Target
 experience:  9+ years — Target · Falabella · Lowe's · Mphasis
 focus:
   - durable workflow orchestration (Temporal)
@@ -110,7 +104,7 @@ A harness for my team that sets **team-wide context** for coding agents (Claude 
 
 | When | Where | What I built |
 |---|---|---|
-| 2024 → now | **Target** · Lead Software Engineer | Unified Item Orchestrator (Temporal, 35 systems, 10M/day), Item Agent Orchestrator (ADK + A2A), Citus core data service, LLM attribute enrichment, item taxonomy rewrite |
+| 2024 → now | **Target** · Software Engineer | Unified Item Orchestrator (Temporal, 35 systems, 10M/day), Item Agent Orchestrator (ADK + A2A), Citus core data service, LLM attribute enrichment, item taxonomy rewrite |
 | 2021 → 2024 | **Falabella** · Senior SWE | Go promotion engine (−30% latency, −10% memory), store data plane to 200+ stores with zero data loss, event-driven order confirmation & store BFFs |
 | 2019 → 2021 | **Lowe's** · SWE | Enterprise Cart & Checkout; migrated 100% of traffic off a decade-old system (Spring WebFlux, Couchbase, Kafka) |
 | 2017 → 2019 | **Mphasis** · SWE | NEXTSTEP: platform hosting 40 microservices, plus a liveness-monitoring service |
