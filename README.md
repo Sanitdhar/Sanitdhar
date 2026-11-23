@@ -23,7 +23,7 @@
 
 ```yaml
 name:        Sanit Dhar
-role:        Software Engineer @ Target
+role:        Engineering @ Target
 experience:  9+ years — Target · Falabella · Lowe's · Mphasis
 focus:
   - durable workflow orchestration (Temporal)
