@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300"><style>
+svg{color:#141820;font-family:"Helvetica Neue",Arial,sans-serif}
+.box{fill:#fbfbf9;stroke:currentColor;stroke-width:1.4}.box.hot{stroke:#2346d4;stroke-width:2.4}.box.warn{stroke:#d9480f;stroke-width:2.2}.box.ghost{fill:none;stroke:#d3d7d0;stroke-dasharray:4 4}
+.t{font-size:14px;fill:currentColor;font-weight:600}.t.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;font-weight:400;fill:#5b6370}.t.hot{fill:#2346d4}.t.warn{fill:#d9480f}.t.panel{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:.05em;fill:#5b6370}
+.lab{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;fill:#5b6370}.ln{stroke:currentColor;stroke-width:1.4;fill:none}.ln.hot{stroke:#2346d4;stroke-width:2}.ln.dash{stroke-dasharray:5 4}.mk{fill:currentColor}.mk.hot{fill:#2346d4}
+</style><rect width="100%%" height="100%%" fill="#fbfbf9"/>
+          <defs>
+            <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a3h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <rect class="box" x="20" y="122" width="140" height="56" rx="4"/>
+          <text class="t" x="90" y="155" text-anchor="middle">Item request</text>
+          <polygon class="box hot" points="300,82 390,150 300,218 210,150"/>
+          <text class="t hot" x="300" y="146" text-anchor="middle">Decision</text>
+          <text class="t" x="300" y="164" text-anchor="middle">classifier</text>
+          <rect class="box" x="470" y="30" width="170" height="56" rx="4"/><text class="t" x="555" y="55" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="73" text-anchor="middle">specialist</text>
+          <rect class="box" x="470" y="122" width="170" height="56" rx="4"/><text class="t" x="555" y="147" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="165" text-anchor="middle">specialist</text>
+          <rect class="box" x="470" y="214" width="170" height="56" rx="4"/><text class="t" x="555" y="239" text-anchor="middle">ADK agent</text><text class="t sub" x="555" y="257" text-anchor="middle">specialist</text>
+          <rect class="box hot" x="760" y="100" width="220" height="100" rx="6"/>
+          <text class="t hot" x="870" y="140" text-anchor="middle">Temporal</text>
+          <text class="t" x="870" y="160" text-anchor="middle">task orchestrator</text>
+          <text class="t sub" x="870" y="180" text-anchor="middle">shared with UIO</text>
+
+          <line class="ln" x1="160" y1="150" x2="206" y2="150" marker-end="url(#a3)"/>
+          <path class="ln hot" d="M362,129 C410,100 420,60 466,58" marker-end="url(#a3h)"/>
+          <line class="ln hot" x1="390" y1="150" x2="466" y2="150" marker-end="url(#a3h)"/>
+          <path class="ln hot" d="M362,171 C410,200 420,240 466,242" marker-end="url(#a3h)"/>
+          <text class="lab" x="420" y="140" text-anchor="middle">route</text>
+
+          <line class="ln" x1="555" y1="88" x2="555" y2="120" marker-start="url(#a3)" marker-end="url(#a3)"/>
+          <line class="ln" x1="555" y1="180" x2="555" y2="212" marker-start="url(#a3)" marker-end="url(#a3)"/>
+          <text class="lab" x="566" y="108">A2A</text>
+          <text class="lab" x="566" y="200">A2A</text>
+
+          <path class="ln" d="M640,58 C700,60 710,120 756,128" marker-end="url(#a3)"/>
+          <line class="ln" x1="640" y1="150" x2="756" y2="150" marker-end="url(#a3)"/>
+          <path class="ln" d="M640,242 C700,240 710,180 756,172" marker-end="url(#a3)"/>
+          <text class="lab" x="698" y="170" text-anchor="middle">long-running</text>
+          <text class="lab" x="698" y="184" text-anchor="middle">tasks</text>
+        </svg>

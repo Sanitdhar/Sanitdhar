@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" width="1000" height="340"><style>
+svg{color:#141820;font-family:"Helvetica Neue",Arial,sans-serif}
+.box{fill:#fbfbf9;stroke:currentColor;stroke-width:1.4}.box.hot{stroke:#2346d4;stroke-width:2.4}.box.warn{stroke:#d9480f;stroke-width:2.2}.box.ghost{fill:none;stroke:#d3d7d0;stroke-dasharray:4 4}
+.t{font-size:14px;fill:currentColor;font-weight:600}.t.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;font-weight:400;fill:#5b6370}.t.hot{fill:#2346d4}.t.warn{fill:#d9480f}.t.panel{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:.05em;fill:#5b6370}
+.lab{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;fill:#5b6370}.ln{stroke:currentColor;stroke-width:1.4;fill:none}.ln.hot{stroke:#2346d4;stroke-width:2}.ln.dash{stroke-dasharray:5 4}.mk{fill:currentColor}.mk.hot{fill:#2346d4}
+</style><rect width="100%%" height="100%%" fill="#fbfbf9"/>
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a1h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- vendors -->
+          <rect class="box" x="20" y="122" width="140" height="56" rx="4"/>
+          <text class="t" x="90" y="146" text-anchor="middle">Vendors &amp;</text>
+          <text class="t" x="90" y="164" text-anchor="middle">partners</text>
+          <!-- api -->
+          <rect class="box" x="210" y="122" width="150" height="56" rx="4"/>
+          <text class="t" x="285" y="146" text-anchor="middle">Unified</text>
+          <text class="t" x="285" y="164" text-anchor="middle">ingestion API</text>
+          <!-- temporal -->
+          <rect class="box hot" x="420" y="100" width="180" height="100" rx="6"/>
+          <text class="t hot" x="510" y="140" text-anchor="middle">Temporal</text>
+          <text class="t" x="510" y="160" text-anchor="middle">item workflow</text>
+          <text class="t sub" x="510" y="180" text-anchor="middle">one per item</text>
+          <!-- 35 systems stack -->
+          <rect class="box" x="682" y="22" width="160" height="56" rx="4"/>
+          <rect class="box" x="676" y="28" width="160" height="56" rx="4"/>
+          <rect class="box" x="670" y="34" width="160" height="56" rx="4"/>
+          <text class="t" x="750" y="58" text-anchor="middle">35 item systems</text>
+          <text class="t sub" x="750" y="76" text-anchor="middle">activities</text>
+          <!-- sellable -->
+          <rect class="box" x="860" y="122" width="120" height="56" rx="28"/>
+          <text class="t" x="920" y="146" text-anchor="middle">Sellable</text>
+          <text class="t" x="920" y="164" text-anchor="middle">at Target</text>
+          <!-- cds -->
+          <rect class="box" x="330" y="262" width="230" height="58" rx="4"/>
+          <text class="t" x="445" y="286" text-anchor="middle">Core Data Service</text>
+          <text class="t sub" x="445" y="306" text-anchor="middle">PostgreSQL + Citus · sharded</text>
+          <!-- cassandra -->
+          <rect class="box" x="620" y="262" width="230" height="58" rx="4"/>
+          <text class="t" x="735" y="286" text-anchor="middle">Temporal persistence</text>
+          <text class="t sub" x="735" y="306" text-anchor="middle">Cassandra · sharded</text>
+
+          <!-- edges -->
+          <line class="ln" x1="160" y1="150" x2="206" y2="150" marker-end="url(#a1)"/>
+          <text class="lab" x="183" y="140" text-anchor="middle">items</text>
+          <line class="ln hot flow" x1="360" y1="150" x2="416" y2="150" marker-end="url(#a1h)"/>
+          <text class="lab" x="388" y="140" text-anchor="middle">start</text>
+          <path class="ln hot" d="M600,118 C630,118 640,70 666,66" marker-end="url(#a1h)"/>
+          <path class="ln" d="M668,82 C645,90 630,132 604,132" marker-end="url(#a1)"/>
+          <text class="lab" x="560" y="40" text-anchor="middle">retry · timeout · compensate</text>
+          <line class="ln" x1="560" y1="44" x2="620" y2="88" stroke-opacity=".35"/>
+          <line class="ln hot" x1="600" y1="170" x2="856" y2="170" marker-end="url(#a1h)"/>
+          <text class="lab" x="740" y="190" text-anchor="middle">all steps complete</text>
+          <line class="ln" x1="470" y1="204" x2="458" y2="258" marker-start="url(#a1)" marker-end="url(#a1)"/>
+          <text class="lab" x="416" y="236" text-anchor="end">item state</text>
+          <path class="ln dash" d="M580,200 C600,230 680,232 706,258" marker-end="url(#a1)"/>
+          <text class="lab" x="700" y="232">history · task queues</text>
+        </svg>

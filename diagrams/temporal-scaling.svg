@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300"><style>
+svg{color:#141820;font-family:"Helvetica Neue",Arial,sans-serif}
+.box{fill:#fbfbf9;stroke:currentColor;stroke-width:1.4}.box.hot{stroke:#2346d4;stroke-width:2.4}.box.warn{stroke:#d9480f;stroke-width:2.2}.box.ghost{fill:none;stroke:#d3d7d0;stroke-dasharray:4 4}
+.t{font-size:14px;fill:currentColor;font-weight:600}.t.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;font-weight:400;fill:#5b6370}.t.hot{fill:#2346d4}.t.warn{fill:#d9480f}.t.panel{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:.05em;fill:#5b6370}
+.lab{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;fill:#5b6370}.ln{stroke:currentColor;stroke-width:1.4;fill:none}.ln.hot{stroke:#2346d4;stroke-width:2}.ln.dash{stroke-dasharray:5 4}.mk{fill:currentColor}.mk.hot{fill:#2346d4}
+</style><rect width="100%%" height="100%%" fill="#fbfbf9"/>
+          <defs>
+            <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="a2h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk hot" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <!-- before panel -->
+          <rect class="box ghost" x="16" y="16" width="400" height="268" rx="6"/>
+          <text class="t panel" x="36" y="44">BEFORE · ~5M WORKFLOWS/DAY</text>
+          <rect class="box" x="116" y="70" width="200" height="52" rx="4"/>
+          <text class="t" x="216" y="101" text-anchor="middle">Temporal history service</text>
+          <line class="ln" x1="216" y1="122" x2="216" y2="192" marker-end="url(#a2)"/>
+          <text class="lab" x="226" y="162">all history writes</text>
+          <rect class="box warn" x="126" y="198" width="180" height="58" rx="4"/>
+          <text class="t warn" x="216" y="224" text-anchor="middle">Single PostgreSQL</text>
+          <text class="t sub" x="216" y="243" text-anchor="middle">one store</text>
+
+          <!-- migrate arrow -->
+          <line class="ln hot" x1="428" y1="150" x2="528" y2="150" marker-end="url(#a2h)"/>
+          <text class="lab" x="478" y="138" text-anchor="middle">migrate</text>
+
+          <!-- after panel -->
+          <rect class="box ghost" x="540" y="16" width="444" height="268" rx="6"/>
+          <text class="t panel" x="560" y="44">AFTER · 10M WORKFLOWS/DAY TARGET</text>
+          <rect class="box" x="580" y="70" width="110" height="46" rx="4"/><text class="t" x="635" y="98" text-anchor="middle">shard 1</text>
+          <rect class="box" x="707" y="70" width="110" height="46" rx="4"/><text class="t" x="762" y="98" text-anchor="middle">shard 2</text>
+          <rect class="box" x="834" y="70" width="110" height="46" rx="4"/><text class="t" x="889" y="98" text-anchor="middle">shard N</text>
+          <line class="ln hot" x1="635" y1="116" x2="635" y2="192" marker-end="url(#a2h)"/>
+          <line class="ln hot" x1="762" y1="116" x2="762" y2="192" marker-end="url(#a2h)"/>
+          <line class="ln hot" x1="889" y1="116" x2="889" y2="192" marker-end="url(#a2h)"/>
+          <text class="lab" x="700" y="160" text-anchor="middle">partitioned</text>
+          <text class="lab" x="827" y="160" text-anchor="middle">writes</text>
+          <rect class="box hot" x="580" y="198" width="110" height="58" rx="4"/><text class="t" x="635" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="635" y="243" text-anchor="middle">node 1</text>
+          <rect class="box hot" x="707" y="198" width="110" height="58" rx="4"/><text class="t" x="762" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="762" y="243" text-anchor="middle">node 2</text>
+          <rect class="box hot" x="834" y="198" width="110" height="58" rx="4"/><text class="t" x="889" y="224" text-anchor="middle">Cassandra</text><text class="t sub" x="889" y="243" text-anchor="middle">node N</text>
+        </svg>

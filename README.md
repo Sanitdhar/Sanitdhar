@@ -50,21 +50,7 @@ ask_me_about: [Temporal internals, sharding Postgres, agent orchestration, spec-
 
 The single ingestion route for Target vendors and partners to bring catalog items to sale. Every item runs as a durable, long-running **Temporal** workflow that drives **35 systems** from submission to sellable.
 
-```mermaid
-flowchart LR
-    V["Vendors & Partners"] -->|"catalog items"| API["Unified Ingestion API"]
-    API -->|"start one workflow per item"| T{{"Temporal<br/>Item Workflow"}}
-    T -->|"activities · retry · timeout · compensate"| S["35 item systems"]
-    S -->|"results"| T
-    T <-->|"item state"| CDS[("Core Data Service<br/>PostgreSQL + Citus")]
-    T -.->|"history & task queues"| C[("Temporal persistence<br/>sharded Cassandra")]
-    T -->|"all steps complete"| SELL(["Sellable at Target"])
-
-    classDef core fill:#2346D4,stroke:#0B1F3A,color:#fff;
-    classDef store fill:#0B1F3A,stroke:#2346D4,color:#fff;
-    class T core;
-    class CDS,C store;
-```
+<p align="center"><img src="diagrams/temporal-item-workflow.svg" alt="Temporal item workflow architecture" /></p>
 
 - Saga-style compensation for partial failures; idempotent activities; workflow state survives worker restarts and downstream outages.
 - **Core Data Service** on horizontally sharded **PostgreSQL + Citus** as the platform's system of record.
@@ -73,54 +59,19 @@ flowchart LR
 
 Moving Temporal's persistence off a single PostgreSQL store onto horizontally sharded **Cassandra**.
 
-```mermaid
-flowchart LR
-    subgraph BEFORE["Before · ~5M workflows/day"]
-        direction TB
-        H1["Temporal history service"] -->|"all writes"| PG[("Single PostgreSQL")]
-    end
-    subgraph AFTER["After · 10M workflows/day target"]
-        direction TB
-        H2["Temporal history shards"] -->|"partitioned writes"| C1[("Cassandra node 1")]
-        H2 --> C2[("Cassandra node 2")]
-        H2 --> C3[("Cassandra node N")]
-    end
-    BEFORE ==>|"migrate persistence"| AFTER
-```
+<p align="center"><img src="diagrams/temporal-scaling.svg" alt="Temporal persistence scaling: single PostgreSQL to sharded Cassandra" /></p>
 
 ### 3 · Item Agent Orchestrator
 
 A multi-agent platform on **Google ADK**. Agents talk over **A2A**, a **decision-model classifier** routes each request, and the UIO Temporal platform runs the long-running agent tasks.
 
-```mermaid
-flowchart LR
-    R["Item request"] --> CL{"Decision-model<br/>classifier"}
-    CL -->|"route"| A1["ADK agent"]
-    CL -->|"route"| A2["ADK agent"]
-    CL -->|"route"| A3["ADK agent"]
-    A1 <-->|"A2A"| A2
-    A2 <-->|"A2A"| A3
-    A1 & A2 & A3 -->|"long-running tasks"| T{{"Temporal task orchestrator"}}
-
-    classDef core fill:#2346D4,stroke:#0B1F3A,color:#fff;
-    class CL,T core;
-```
+<p align="center"><img src="diagrams/item-agent-orchestrator.svg" alt="Item Agent Orchestrator architecture" /></p>
 
 ### 4 · LLM attribute enrichment with human-in-the-loop
 
 LLMs derive and enrich item attributes. The taxonomy platform controls which attributes AI may derive, and taxonomists review AI recommendations to close the loop.
 
-```mermaid
-flowchart LR
-    TX["Taxonomy platform<br/>AI-derivable flag"] -->|"eligible attributes"| EN["Enrichment service"]
-    EN -->|"generate"| M["DS / LLM models"]
-    M -->|"derived values"| MDM[("Item MDM<br/>AI-generated attribute group")]
-    M -->|"taxonomy recommendations"| HITL["HITL review"]
-    HITL -->|"taxonomist feedback"| M
-
-    classDef core fill:#2346D4,stroke:#0B1F3A,color:#fff;
-    class HITL core;
-```
+<p align="center"><img src="diagrams/llm-enrichment-hitl.svg" alt="LLM attribute enrichment with human-in-the-loop" /></p>
 
 ### 5 · AI-driven development harness
 
