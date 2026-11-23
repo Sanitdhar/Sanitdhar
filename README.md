@@ -82,9 +82,9 @@ A harness for my team that sets **team-wide context** for coding agents (Claude 
 ## 🧰 Tech stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=java,go,kotlin,py,js,spring,nodejs&perline=7" alt="Languages and frameworks" /><br/>
-  <img src="https://skillicons.dev/icons?i=postgres,cassandra,mongodb,redis,elasticsearch,kafka,graphql&perline=7" alt="Data and messaging" /><br/>
-  <img src="https://skillicons.dev/icons?i=gcp,kubernetes,docker,terraform,gitlab,githubactions,jenkins,grafana,prometheus&perline=9" alt="Cloud, infra and observability" />
+  <img height="64" src="https://skillicons.dev/icons?i=java,go,kotlin,py,js,spring,nodejs&perline=7" alt="Languages and frameworks" /><br/>
+  <img height="64" src="https://skillicons.dev/icons?i=postgres,cassandra,mongodb,redis,elasticsearch,kafka,graphql&perline=7" alt="Data and messaging" /><br/>
+  <img height="64" src="https://skillicons.dev/icons?i=gcp,kubernetes,docker,terraform,gitlab,githubactions,jenkins,grafana,prometheus&perline=9" alt="Cloud, infra and observability" />
 </p>
 
 <p align="center">
